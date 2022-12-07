@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/users')
 
 const app = express();
 // allows sending json objects
@@ -26,6 +27,7 @@ app.get('/api', (req, res) => {
 
 // auth route
 app.use('/api/auth', authRoute);
+app.use('/api/users', userRoute);
 
 app.listen(3000, () => {
     console.log(`listening on port 3000...`)

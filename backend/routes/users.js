@@ -3,7 +3,7 @@ const User = require('../models/User');
 const BlogPost = require('../models/BlogPost')
 const bcrypt = require('bcrypt');
 
-// Update 
+// Update User
 router.put("/:id", async (req, res) => {
     // request id matches parameter id
     if(req.body.userId === req.params.id) {
@@ -29,7 +29,7 @@ router.put("/:id", async (req, res) => {
     }
 })
 
-// Delete
+// Delete User
 router.delete("/:id", async (req, res) => {
     if(req.body.userId === req.params.id) {
         try {
@@ -49,7 +49,8 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-  router.get("/:id", async (req, res) => {
+// Get User
+router.get("/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         const { password, ...others } = user._doc;
@@ -57,6 +58,6 @@ router.delete("/:id", async (req, res) => {
     } catch (error) {
         res.status(500).json(err);
     }
-  })
+})
 
 module.exports = router
